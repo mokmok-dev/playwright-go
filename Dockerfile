@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/playwright:v1.32.0-focal
+FROM mcr.microsoft.com/playwright:v1.32.3-focal
 
 ARG GO_VERSION=1.20
 
