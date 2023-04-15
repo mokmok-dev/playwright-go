@@ -1,11 +1,11 @@
-FROM mcr.microsoft.com/playwright:v1.32.3-focal
+FROM ubuntu:20.04
 
 ARG GO_VERSION=1.20
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN apt-get update \
-      && apt-get install --no-install-recommends -y build-essential \
+      && apt-get install --no-install-recommends -y build-essential wget ca-certificates \
       && wget -O /tmp/go.tar.gz https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz \
       && tar -C /usr/local -xzf /tmp/go.tar.gz \
       && rm /tmp/go.tar.gz \
