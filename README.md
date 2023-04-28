@@ -2,15 +2,16 @@
 
 # Instruction
 
-To use this base image, please specify `DriverDirectory` to `/root/.cache`.
-Also, we are recommend to specify `SkipInstallBrowsers` to `true`.
+To use this base image, please specify followng arguments of `BrowserTypeLaunchOptions`.
 
 ```go
-pw, err := playwright.Run(&playwright.RunOptions{
-	DriverDirectory:     "/root/.cache",
-	SkipInstallBrowsers: true,
+pw, _ := playwright.Run()
+
+browser, _ := pw.Chromium.Launch(playwright.BrowserTypeLaunchOptions{
+	Args: []string{
+		"--disable-dev-shm-usage",
+		"--single-process",
+		"--no-sandbox",
+	},
 })
-if err != nil {
-	return nil, fmt.Errorf("failed to start playwright: %w", err)
-}
 ```
