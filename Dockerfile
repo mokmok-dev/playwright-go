@@ -1,11 +1,12 @@
-FROM mcr.microsoft.com/playwright:v1.32.3-focal
+FROM ubuntu:focal
 
+ARG DEBIAN_FRONTEND=noninteractive
 ARG GO_VERSION=1.20
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN apt-get update \
-      && apt-get install --no-install-recommends -y build-essential \
+      && apt-get install --no-install-recommends -y build-essential ca-certificates wget \
       && wget -O /tmp/go.tar.gz https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz \
       && tar -C /usr/local -xzf /tmp/go.tar.gz \
       && rm /tmp/go.tar.gz \
