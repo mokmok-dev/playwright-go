@@ -9,7 +9,10 @@ import (
 const url = "https://playwright.dev/"
 
 func main() {
-	pw, err := playwright.Run()
+	pw, err := playwright.Run(&playwright.RunOptions{
+		DriverDirectory:     "/root/.cache",
+		SkipInstallBrowsers: true,
+	})
 	if err != nil {
 		panic(err)
 	}
