@@ -2,10 +2,13 @@
 
 # Instruction
 
-To use this base image, please specify followng arguments of `BrowserTypeLaunchOptions`.
+To use this base image, please specify followng arguments of `RunOptions` and `BrowserTypeLaunchOptions`.
 
 ```go
-pw, _ := playwright.Run()
+pw, err := playwright.Run(&playwright.RunOptions{
+	DriverDirectory:     "/root/.cache",
+	SkipInstallBrowsers: true,
+})
 
 browser, _ := pw.Chromium.Launch(playwright.BrowserTypeLaunchOptions{
 	Args: []string{
