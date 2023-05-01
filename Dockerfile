@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM --platform=linux/amd64 ubuntu:focal
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG GO_VERSION=1.20
